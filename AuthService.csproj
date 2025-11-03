@@ -24,4 +24,11 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
   </ItemGroup>
 
+  <!-- Exclude test files placed in the local `tests/` folder from the main web project
+       so the test project can be compiled separately. -->
+  <ItemGroup>
+    <Compile Remove="tests\**\*.cs" />
+    <None Remove="tests\**\*" />
+  </ItemGroup>
+
 </Project>
