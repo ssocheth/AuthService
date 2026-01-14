@@ -67,7 +67,7 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
     context.Database.EnsureCreated();
-    DatabaseSeeder.Seed(context); 
+    DatabaseSeeder.Seed(context);
 }
 
 app.Run();

@@ -27,7 +27,7 @@ namespace AuthService.Controllers
             {
                 // Get current user's role from claims
                 var currentUserRole = User.Claims.FirstOrDefault(c => c.Type == "role")?.Value ?? "User";
-                
+
                 var user = await _authService.CreateUserAsync(request, currentUserRole);
                 return Ok(user);
             }
@@ -72,13 +72,13 @@ namespace AuthService.Controllers
                 // Update allowed fields
                 if (!string.IsNullOrEmpty(request.FirstName))
                     user.FirstName = request.FirstName;
-                
+
                 if (!string.IsNullOrEmpty(request.LastName))
                     user.LastName = request.LastName;
-                
+
                 if (!string.IsNullOrEmpty(request.Role))
                     user.Role = request.Role;
-                
+
                 user.IsActive = request.IsActive;
                 user.UpdatedAt = DateTime.UtcNow;
 
