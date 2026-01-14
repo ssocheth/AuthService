@@ -106,6 +106,7 @@ namespace AuthService.Tests
                     new Claim(ClaimTypes.NameIdentifier, "42"),
                     new Claim(ClaimTypes.Email, "expired@example.com")
                 }),
+                NotBefore = DateTime.UtcNow.AddMinutes(-20),
                 Expires = DateTime.UtcNow.AddMinutes(-10),
                 Issuer = config["Jwt:Issuer"],
                 Audience = config["Jwt:Audience"],

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using AuthService.Data;
 using AuthService.Models;
 using AuthService.Services;
+using AuthSvc = AuthService.Services.AuthService;
 using AuthService.DTOs;
 using Xunit;
 
@@ -49,7 +50,7 @@ namespace AuthService.Tests
         {
             var config = GetConfiguration();
             using var db = GetInMemoryDb();
-            var authService = new AuthService(db, new FakeJwtService(), config);
+            var authService = new AuthSvc(db, new FakeJwtService(), config);
 
             var request = new CreateUserRequest
             {
@@ -78,7 +79,7 @@ namespace AuthService.Tests
         {
             var config = GetConfiguration();
             using var db = GetInMemoryDb();
-            var authService = new AuthService(db, new FakeJwtService(), config);
+            var authService = new AuthSvc(db, new FakeJwtService(), config);
 
             var request = new CreateUserRequest
             {
@@ -109,7 +110,7 @@ namespace AuthService.Tests
             db.Users.Add(new User { Email = "dup@example.com", PasswordHash = "x", FirstName = "D", LastName = "U" });
             await db.SaveChangesAsync();
 
-            var authService = new AuthService(db, new FakeJwtService(), config);
+            var authService = new AuthSvc(db, new FakeJwtService(), config);
 
             var request = new CreateUserRequest
             {
